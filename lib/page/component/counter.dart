@@ -39,20 +39,18 @@ class _CounterWidgetState extends State<CounterWidget> {
   @override
   Widget build(BuildContext context) {
     developer.log('build', name: 'my.app.counter');
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(16), // 内边距
-        margin: const EdgeInsets.symmetric(horizontal: 20), // 外边距
-        decoration: BoxDecoration(
-          color: Colors.blue[50], // 背景色
-          borderRadius: BorderRadius.circular(12), // 圆角
-          border: Border.all(color: Colors.blue, width: 2), // 边框
-        ),
-        child: TextButton(
-          child: Text('$_counter'),
-          // 点击后计数器自增
-          onPressed: () => setState(() => ++_counter),
-        ),
+    return Container(
+      padding: const EdgeInsets.all(16), // 内边距
+      margin: const EdgeInsets.symmetric(horizontal: 20), // 外边距
+      decoration: BoxDecoration(
+        color: Colors.blue[50], // 背景色
+        borderRadius: BorderRadius.circular(12), // 圆角
+        border: Border.all(color: Colors.blue, width: 2), // 边框
+      ),
+      child: TextButton(
+        child: Text('$_counter'),
+        // 点击后计数器自增
+        onPressed: () => setState(() => ++_counter),
       ),
     );
   }

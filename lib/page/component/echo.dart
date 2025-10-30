@@ -15,15 +15,13 @@ class Echo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: backgroundColor,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
-          ),
+    return Container(
+      color: backgroundColor,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: textColor,
+          fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
         ),
       ),
     );

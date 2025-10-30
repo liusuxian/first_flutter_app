@@ -15,13 +15,15 @@ class NewHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: backgroundColor, title: Text(title)),
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        title: Text(title),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // 添加间距
-            const SizedBox(height: 20),
             // 将 Echo 和 CounterWidget 放到一个容器中
             Container(
               padding: const EdgeInsets.all(16), // 内边距
@@ -39,13 +41,42 @@ class NewHomePage extends StatelessWidget {
                     textColor: Colors.blue,
                     backgroundColor: Colors.transparent,
                   ),
-                  const SizedBox(height: 16), // 两个组件之间的间距
+                  const SizedBox(height: 20), // 两个组件之间的间距
                   CounterWidget(),
                 ],
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        // 当前选中的索引
+        onTap: (index) {
+          // 处理点击事件
+        },
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: '首页',
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search_outlined),
+            activeIcon: Icon(Icons.search),
+            label: '搜索',
+            backgroundColor: Colors.green,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            activeIcon: Icon(Icons.person),
+            label: '我的',
+            backgroundColor: Colors.purple,
+          ),
+        ],
+        fixedColor: Colors.black,
+        backgroundColor: Colors.white,
       ),
     );
   }
