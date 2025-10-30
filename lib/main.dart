@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:first_flutter_app/page/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const NewHomePage(title: 'Flutter Home Page'),
     );
   }
 }
@@ -109,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Echo(text: "Hello Flutter"),
           ],
         ),
       ),
@@ -118,36 +119,6 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-// 回显字符串的Echo widget
-class Echo extends StatelessWidget {
-  const Echo({
-    super.key,
-    required this.text,
-    this.textColor = Colors.white,
-    this.backgroundColor = Colors.blue,
-  });
-
-  final String text;
-  final Color textColor;
-  final Color backgroundColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: backgroundColor,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
-          ),
-        ),
-      ),
     );
   }
 }
