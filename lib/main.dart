@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:first_flutter_app/page/home/home.dart';
+import 'package:first_flutter_app/page/counter/counter.dart';
+import 'package:first_flutter_app/page/state_object/state_object.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const NewHomePage(title: 'Flutter Home Page'),
+      // home: const CounterPage(title: 'Flutter Counter Page'),
+      home: const GetStateObjectRoute(),
     );
   }
 }

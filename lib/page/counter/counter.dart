@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:first_flutter_app/page/component/echo.dart';
 import 'package:first_flutter_app/page/component/counter.dart';
 
-class NewHomePage extends StatelessWidget {
-  const NewHomePage({
+class CounterPage extends StatelessWidget {
+  const CounterPage({
     super.key,
     required this.title,
     this.backgroundColor = Colors.grey,
