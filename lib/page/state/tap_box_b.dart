@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 // ParentWidget 为 TapBoxB 管理状态.
 // ------------------------ ParentWidget --------------------------------
-class ParentWidget extends StatefulWidget {
-  const ParentWidget({super.key});
+class ParentTapBoxBWidget extends StatefulWidget {
+  const ParentTapBoxBWidget({super.key});
 
   @override
-  State<ParentWidget> createState() => _ParentWidgetState();
+  State<ParentTapBoxBWidget> createState() => _ParentTapBoxBWidgetState();
 }
 
-class _ParentWidgetState extends State<ParentWidget> {
+class _ParentTapBoxBWidgetState extends State<ParentTapBoxBWidget> {
   bool _active = false;
 
   void _handleTapBoxChanged(bool newValue) {

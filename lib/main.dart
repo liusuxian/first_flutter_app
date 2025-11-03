@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       // home: const GetStateObjectRoute(),
       // home: const CupertinoTestRoute(),
       // home: const TapBoxAWidget(),
-      home: const ParentWidget(),
+      home: const ParentTapBoxBWidget(),
     );
   }
 }
