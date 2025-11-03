@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:first_flutter_app/page/counter/counter.dart';
-import 'package:first_flutter_app/page/state_object/state_object.dart';
+import 'package:first_flutter_app/page/state/state.dart';
 
 void main() {
   runApp(const MyApp());
