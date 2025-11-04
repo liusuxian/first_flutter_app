@@ -4,6 +4,8 @@ import 'package:first_flutter_app/page/state/state.dart';
 import 'package:first_flutter_app/page/cupertino/cupertino.dart';
 import 'package:first_flutter_app/page/state/tap_box_a.dart';
 import 'package:first_flutter_app/page/state/tap_box_b.dart';
+import 'package:first_flutter_app/page/state/tap_box_c.dart';
+import 'package:first_flutter_app/page/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +42,9 @@ class MyApp extends StatelessWidget {
       // home: const GetStateObjectRoute(),
       // home: const CupertinoTestRoute(),
       // home: const TapBoxAWidget(),
-      home: const ParentTapBoxBWidget(),
+      // home: const ParentTapBoxBWidget(),
+      // home: const ParentTapBoxCWidget(),
+      home: const NewHomePage(title: 'Flutter Home Page'),
     );
   }
 }
