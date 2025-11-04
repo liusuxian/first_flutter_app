@@ -6,10 +6,12 @@ class CupertinoTestRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        // 添加左箭头（仅展示，无交互）
-        leading: Icon(CupertinoIcons.back, color: CupertinoColors.activeBlue),
-        middle: Text("Cupertino Demo"),
+      navigationBar: CupertinoNavigationBar(
+        middle: const Text("Cupertino Demo"),
+        // 添加返回按钮
+        leading: CupertinoNavigationBarBackButton(
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       child: Center(
         child: CupertinoButton(

@@ -28,10 +28,16 @@ class _ParentTapBoxBWidgetState extends State<ParentTapBoxBWidget> {
 class TapBoxBWidget extends StatelessWidget {
   const TapBoxBWidget({
     super.key,
+    this.title = "父Widget管理子Widget的状态",
+    this.titleColor = Colors.white,
+    this.backgroundColor = Colors.blueAccent,
     this.active = false,
     required this.onChanged,
   });
 
+  final String title;
+  final Color titleColor;
+  final Color backgroundColor;
   final bool active;
   final ValueChanged<bool> onChanged;
 
@@ -41,18 +47,31 @@ class TapBoxBWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _handleTap,
-      child: Container(
-        width: 200.0,
-        height: 200.0,
-        decoration: BoxDecoration(
-          color: active ? Colors.lightGreen[700] : Colors.grey[600],
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: titleColor),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        child: Center(
-          child: Text(
-            active ? 'Active' : 'Inactive',
-            style: TextStyle(fontSize: 32.0, color: Colors.white),
+        backgroundColor: backgroundColor,
+        title: Text(title, style: TextStyle(color: titleColor)),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: GestureDetector(
+          onTap: _handleTap,
+          child: Container(
+            width: 300.0,
+            height: 300.0,
+            decoration: BoxDecoration(
+              color: active ? Colors.lightGreen[700] : Colors.grey[600],
+            ),
+            child: Center(
+              child: Text(
+                active ? 'Active' : 'Inactive',
+                style: TextStyle(fontSize: 32.0, color: Colors.white),
+              ),
+            ),
           ),
         ),
       ),

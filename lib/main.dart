@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:first_flutter_app/page/counter/counter.dart';
-import 'package:first_flutter_app/page/state/state.dart';
-import 'package:first_flutter_app/page/cupertino/cupertino.dart';
-import 'package:first_flutter_app/page/state/tap_box_a.dart';
-import 'package:first_flutter_app/page/state/tap_box_b.dart';
-import 'package:first_flutter_app/page/state/tap_box_c.dart';
 import 'package:first_flutter_app/page/home/home.dart';
 
 void main() {
@@ -38,12 +32,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      // home: const CounterPage(title: 'Flutter Counter Page'),
-      // home: const GetStateObjectRoute(),
-      // home: const CupertinoTestRoute(),
-      // home: const TapBoxAWidget(),
-      // home: const ParentTapBoxBWidget(),
-      // home: const ParentTapBoxCWidget(),
       home: const NewHomePage(title: 'Flutter Home Page'),
     );
   }

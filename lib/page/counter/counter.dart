@@ -6,18 +6,30 @@ class CounterPage extends StatelessWidget {
   const CounterPage({
     super.key,
     required this.title,
-    this.backgroundColor = Colors.grey,
+    this.titleColor = Colors.white,
+    this.backgroundColor = Colors.blueAccent,
   });
 
   final String title;
+  final Color titleColor;
   final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: titleColor),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: backgroundColor,
-        title: Text(title),
+        title: Text(
+          title,
+          style: TextStyle(
+            color: titleColor,
+            fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -48,35 +60,6 @@ class CounterPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        // 当前选中的索引
-        onTap: (index) {
-          // 处理点击事件
-        },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: '首页',
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search_outlined),
-            activeIcon: Icon(Icons.search),
-            label: '搜索',
-            backgroundColor: Colors.green,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: '我的',
-            backgroundColor: Colors.purple,
-          ),
-        ],
-        fixedColor: Colors.black,
-        backgroundColor: Colors.white,
       ),
     );
   }

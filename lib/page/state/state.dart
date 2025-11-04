@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class GetStateObjectRoute extends StatefulWidget {
-  const GetStateObjectRoute({super.key});
+  const GetStateObjectRoute({
+    super.key,
+    this.title = "子树中获取State对象",
+    this.titleColor = Colors.white,
+    this.backgroundColor = Colors.blueAccent,
+  });
+
+  final String title;
+  final Color titleColor;
+  final Color backgroundColor;
 
   @override
   State<GetStateObjectRoute> createState() => _GetStateObjectRouteState();
@@ -17,9 +26,28 @@ class _GetStateObjectRouteState extends State<GetStateObjectRoute> {
     return Scaffold(
       key: _globalKey, // 设置key
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent[400],
-        title: Text("子树中获取State对象"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: widget.titleColor),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: widget.backgroundColor,
+        title: Text(
+          widget.title,
+          style: TextStyle(
+            color: widget.titleColor,
+            fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
+          ),
+        ),
         centerTitle: true,
+        // 在右侧添加抽屉菜单图标
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu, color: widget.titleColor),
+            onPressed: () {
+              _globalKey.currentState?.openDrawer();
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
