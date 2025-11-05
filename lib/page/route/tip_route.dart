@@ -46,18 +46,21 @@ class _RouterTestTipRouteState extends State<RouterTestTipRoute> {
             ElevatedButton(
               onPressed: () async {
                 // 打开`TipRoute`，并等待返回结果
-                var result = await Navigator.push(
+                // var result = await Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return TipRoute(
+                //         // 路由参数
+                //         text: "我是提示xxxx",
+                //       );
+                //     },
+                //   ),
+                // );
+                var result = await Navigator.of(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return TipRoute(
-                        // 路由参数
-                        text: "我是提示xxxx",
-                      );
-                    },
-                  ),
-                );
-                _updateBackResult(result);
+                ).pushNamed("tip_route", arguments: "我是提示xxxx");
+                _updateBackResult(result as String? ?? '无返回值');
                 // 输出 TipRoute 路由返回结果
                 developer.log("路由返回值: $result", name: 'my.app.TipRoute');
               },

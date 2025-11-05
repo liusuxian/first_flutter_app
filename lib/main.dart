@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:first_flutter_app/page/home/home.dart';
+import 'package:first_flutter_app/page/counter/counter.dart';
+import 'package:first_flutter_app/page/state/state.dart';
+import 'package:first_flutter_app/page/state/tap_box_a.dart';
+import 'package:first_flutter_app/page/state/tap_box_b.dart';
+import 'package:first_flutter_app/page/state/tap_box_c.dart';
+import 'package:first_flutter_app/page/cupertino/cupertino.dart';
+import 'package:first_flutter_app/page/route/tip_route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      initialRoute: "/",
+      // 名为"/"的路由作为应用的home(首页)
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,8 +40,25 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      // 注册路由表
+      routes: {
+        // 注册首页路由
+        "/": (context) => NewHomePage(title: 'Flutter Home Page'),
+        "counter": (context) => CounterPage(title: 'Flutter Counter Page'),
+        "state": (context) => GetStateObjectRoute(),
+        "tap_box_a": (context) => TapBoxAWidget(),
+        "tap_box_b": (context) => ParentTapBoxBWidget(),
+        "tap_box_c": (context) => ParentTapBoxCWidget(),
+        "cupertino": (context) => CupertinoTestRoute(),
+        "test_tip_route": (context) => RouterTestTipRoute(),
+        "tip_route": (context) {
+          return TipRoute(
+            text: ModalRoute.of(context)!.settings.arguments as String,
+          );
+        },
+      },
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const NewHomePage(title: 'Flutter Home Page'),
+      // home: const NewHomePage(title: 'Flutter Home Page'),
     );
   }
 }
