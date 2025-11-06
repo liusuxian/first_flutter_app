@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
 import 'package:first_flutter_app/page/home/home.dart';
 import 'package:first_flutter_app/page/counter/counter.dart';
 import 'package:first_flutter_app/page/state/state.dart';
@@ -7,6 +8,8 @@ import 'package:first_flutter_app/page/state/tap_box_b.dart';
 import 'package:first_flutter_app/page/state/tap_box_c.dart';
 import 'package:first_flutter_app/page/cupertino/cupertino.dart';
 import 'package:first_flutter_app/page/route/tip_route.dart';
+import 'package:first_flutter_app/page/not_found/not_found.dart';
+import 'package:first_flutter_app/page/login/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      // 注册路由表
+      // 简单路由用 routes
       routes: {
         // 注册首页路由
         "/": (context) => NewHomePage(title: 'Flutter Home Page'),
@@ -56,6 +59,15 @@ class MyApp extends StatelessWidget {
             text: ModalRoute.of(context)!.settings.arguments as String,
           );
         },
+        "login": (context) => LoginPage(title: "Login Page"),
+      },
+      // 复杂路由用 onGenerateRoute
+      onGenerateRoute: RouteManager.generateRoute,
+      // 404 处理
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) => NotFoundPage(title: "页面不存在"),
+        );
       },
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       // home: const NewHomePage(title: 'Flutter Home Page'),
@@ -146,5 +158,52 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+// 将路由管理单独抽取到一个类中
+class RouteManager {
+  static Route<dynamic>? generateRoute(RouteSettings settings) {
+    // 记录路由日志
+    developer.log("导航到: ${settings.name}", name: 'my.app');
+    // 权限检查
+    bool isLoggedIn = false;
+    bool isAdmin = false;
+
+    switch (settings.name) {
+      // 需要登录的路由
+      case "user_profile":
+      case "user_favorites":
+        if (!isLoggedIn) {
+          return _buildRoute(LoginPage(title: "Login Page"), settings);
+        }
+        return _routeByName(settings.name!, settings);
+      // 需要管理员权限的路由
+      case "admin_dashboard":
+      case "admin_users":
+        if (!isAdmin) {
+          return _buildRoute(LoginPage(title: "Login Page"), settings);
+        }
+        return _routeByName(settings.name!, settings);
+      // 动态参数路由
+      case "product_detail":
+        String text = settings.arguments as String;
+        return _buildRoute(TipRoute(text: text), settings);
+      default:
+        return null; // 交给 onUnknownRoute 处理
+    }
+  }
+
+  static Route<dynamic> _buildRoute(Widget page, RouteSettings settings) {
+    return MaterialPageRoute(builder: (context) => page, settings: settings);
+  }
+
+  static Route<dynamic>? _routeByName(String name, RouteSettings settings) {
+    switch (name) {
+      case "user_profile":
+        return _buildRoute(LoginPage(title: "Login Page"), settings);
+      default:
+        return null;
+    }
   }
 }

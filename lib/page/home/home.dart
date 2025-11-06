@@ -148,6 +148,20 @@ class _NewHomePageState extends State<NewHomePage> {
                 // );
               },
             ),
+            TextButton(
+              child: Text("Open NotFound Page"),
+              onPressed: () {
+                // 导航到新路由
+                Navigator.pushNamed(context, "not_found");
+              },
+            ),
+            TextButton(
+              child: Text("Open UserProfile Page"),
+              onPressed: () {
+                // 导航到新路由
+                Navigator.pushNamed(context, "user_profile");
+              },
+            ),
           ],
         ),
       ),
