@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 // import 'package:first_flutter_app/page/counter/counter.dart';
 // import 'package:first_flutter_app/page/state/state.dart';
@@ -43,6 +44,7 @@ class _NewHomePageState extends State<NewHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            _RandomWordsWidget(),
             TextButton(
               child: Text("Open Counter Page"),
               onPressed: () {
@@ -165,6 +167,18 @@ class _NewHomePageState extends State<NewHomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _RandomWordsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 生成随机字符串
+    final wordPair = WordPair.random();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(wordPair.toString()),
     );
   }
 }
